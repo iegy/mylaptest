@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="hisn_forest">#FF0F3B28</color>
+    <color name="hisn_emerald">#FF2EAD7B</color>
+    <color name="hisn_offwhite">#FFF6F3EC</color>
+    <color name="hisn_charcoal">#FF121413</color>
+    <color name="ic_launcher_background">#FF0F3B28</color>
+    <color name="hisn_private_bg">#FF110F1C</color>
+</resources>

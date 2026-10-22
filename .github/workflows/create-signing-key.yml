@@ -1,0 +1,45 @@
+name: Create signing key (run once)
+
+# يُشغَّل يدوياً مرة واحدة فقط: يولّد مفتاح التوقيع على سيرفر GitHub ويخزّنه مباشرة في Secrets
+# (ANDROID_KEYSTORE_BASE64 / KEYSTORE_PASSWORD / KEY_ALIAS / KEY_PASSWORD) دون أن يظهر في أي سجل أو ملف.
+# يحتاج secret واحداً مؤقتاً اسمه SECRETS_PAT (توكن بصلاحية Secrets: Read and write على هذا المستودع فقط).
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  create:
+    name: Generate keystore and store it as secrets
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Generate and store
+        env:
+          GH_TOKEN: ${{ secrets.SECRETS_PAT }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "::error::Secret SECRETS_PAT is missing. Create it first (see the instructions)."
+            exit 1
+          fi
+          # حماية من استبدال مفتاح موجود بالخطأ (استبداله يعني عدم إمكانية التحديث فوق النسخة المثبتة).
+          if gh secret list | grep -q '^ANDROID_KEYSTORE_BASE64'; then
+            echo "::error::A signing key already exists. Delete the four signing secrets first if you really want a new key."
+            exit 1
+          fi
+          PASS="$(openssl rand -hex 16)"
+          echo "::add-mask::$PASS"
+          KEYSTORE="$RUNNER_TEMP/hisn-release.jks"
+          keytool -genkeypair -keystore "$KEYSTORE" -alias hisn \
+            -keyalg RSA -keysize 4096 -validity 36500 \
+            -storepass "$PASS" -keypass "$PASS" \
+            -dname "CN=HISN Browser, O=iegy.net, C=EG"
+          base64 -w0 "$KEYSTORE" | gh secret set ANDROID_KEYSTORE_BASE64
+          printf '%s' "$PASS" | gh secret set KEYSTORE_PASSWORD
+          printf '%s' "hisn" | gh secret set KEY_ALIAS
+          printf '%s' "$PASS" | gh secret set KEY_PASSWORD
+          shred -u "$KEYSTORE" 2>/dev/null || rm -f "$KEYSTORE"
+          echo "Done. Signing secrets were created. You can now delete SECRETS_PAT."

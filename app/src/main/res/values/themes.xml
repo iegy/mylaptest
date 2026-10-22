@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Shown by the system splash screen. No artificial delay: it disappears as soon as the first frame is drawn. -->
+    <style name="Theme.Hisn.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/hisn_forest</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="postSplashScreenTheme">@style/Theme.Hisn</item>
+    </style>
+
+    <style name="Theme.Hisn" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/hisn_offwhite</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+    </style>
+
+    <!-- Private window: always dark, whatever the system setting, so window background, keyboard, dialogs and
+         system widgets match the violet private palette instead of flashing light. -->
+    <style name="Theme.Hisn.Private" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/hisn_private_bg</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+    </style>
+</resources>

@@ -1,0 +1,31 @@
+HISN Browser — Open-source licenses
+Designed & Developed by Mohammed Hussein | iegy.net
+© 2026 Mohammed Hussein. All rights reserved.
+
+HISN's own source code is © 2026 Mohammed Hussein. All rights reserved.
+
+THIRD-PARTY LIBRARIES (all Apache License 2.0)
+• AndroidX Core, Activity, Lifecycle, Navigation, DataStore, Room, WebKit, Core SplashScreen
+• Jetpack Compose (UI, Foundation, Material 3, Material Icons Extended)
+• Kotlin standard library and kotlinx.coroutines (JetBrains)
+Licence text: https://www.apache.org/licenses/LICENSE-2.0
+
+Test-only libraries (not shipped in the app): JUnit 4 (EPL 1.0), Robolectric (MIT), AndroidX Test (Apache 2.0).
+
+FILTER LISTS
+1) HISN built-in starter list (assets/filters/default_hosts.txt)
+   An original compilation of publicly known advertising and tracking domains, written for this project.
+   © 2026 Mohammed Hussein.
+2) StevenBlack/hosts — "Unified hosts file"
+   Downloaded on demand from https://github.com/StevenBlack/hosts
+   Licence: MIT License, Copyright (c) 2013-present Steven Black.
+   Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+   associated documentation files, to deal in the software without restriction, including without
+   limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies,
+   subject to inclusion of the copyright notice and this permission notice. THE SOFTWARE IS PROVIDED "AS IS",
+   WITHOUT WARRANTY OF ANY KIND.
+   The list is fetched at runtime and cached on the device; it is not bundled in the app.
+
+BROWSER ENGINE
+Web pages are rendered by Android System WebView, provided by Google/Android and updated through the
+device's app store. It is based on the Chromium project (BSD-style licences). HISN does not bundle it.
