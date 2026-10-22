@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="game_title">جري الديناصور</string>
+    <string name="game_tap_start">اضغط للبدء</string>
+    <string name="game_tap_restart">اضغط للمحاولة مرة أخرى</string>
+    <string name="game_over">انتهت اللعبة</string>
+    <string name="game_paused">إيقاف مؤقت</string>
+    <string name="game_score">النقاط: %1$d</string>
+    <string name="game_high_score">الأفضل: %1$d</string>
+    <string name="game_hint">اضغط للقفز</string>
+    <string name="game_hint_v2">اختر مستوى الصعوبة ثم اضغط. السهل أبطأ وأكثر تساهلاً.</string>
+    <string name="game_hint_jump">ضغطة = قفز</string>
+    <string name="game_hint_duck">اضغط أسفل الشاشة = انحناء</string>
+    <string name="game_hint_hold">استمر بالضغط = قفزة أعلى</string>
+    <string name="game_sound_on">الصوت مفعّل</string>
+    <string name="game_sound_off">الصوت متوقف</string>
+</resources>
